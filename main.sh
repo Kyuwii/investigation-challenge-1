@@ -23,18 +23,17 @@ main()
    	useradd ftp -m -d /var/ftp/home/ -s /bin/bash 2>/dev/null
    	echo "ftp:$ftpPass" | chpasswd
 
+   	Dpath="/usr/share/"
+
    	# create file & directory for john
-   	mkdir -p /home/john/Documents 2> /dev/null 
-   	mkdir -p /home/john/Telechargements 2> /dev/null 
-   	mkdir -p /home/john/Images 2> /dev/null 
-   	mkdir -p /home/john/Musique 2> /dev/null 
-   	mkdir -p /home/john/Public 2> /dev/null 
-   	mkdir -p /ftp 2> /dev/null 
-   	mkdir -p /ftp/home 2> /dev/null 
-   	mkdir -p /ftp/home/keys 2> /dev/null 
-   	mkdir -p /ftp/home/share 2> /dev/null 
+   	mkdir -p $Dpath.Documents 2> /dev/null
+   	mkdir -p $Dpath.Factures 2> /dev/null
+   	mkdir -p $Dpath.GitHub 2> /dev/null
+   	mkdir -p $Dpath.Private 2> /dev/null
+   	mkdir -p $Dpath.Public 2> /dev/null
+   	mkdir -p $Dpath.Keys 2> /dev/null
 
-
+   	mkdir -p /home/john/Keys 2> /dev/null
    	# configure FTP logs
 
    	# add encrypted file in FTP
