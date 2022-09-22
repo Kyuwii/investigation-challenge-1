@@ -19,12 +19,12 @@ main()
    	useradd pierre -m -s /bin/bash 2>/dev/null
    	echo "pierre:$pierrePass" | chpasswd
 
-   	apt update && apt install apache2
+   	apt update && apt install -y apache2
    	ufw allow 'Apache'
    	systemctl enable apache2
    	systemctl restart apache2
 
-   	apt update && apt install zip
+   	apt update && apt install -y zip
 
    	# create file & directory for john
    	mkdir -p /home/john/Documents 2> /dev/null
