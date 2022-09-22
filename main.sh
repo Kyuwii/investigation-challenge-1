@@ -50,12 +50,12 @@ main()
 
    	for i in {0..34}; do
    		touch /ftp/home/share/facture2022_$i.txt;
-   		dd if=/dev/urandom of=/ftp/home/share/facture2022_$i.txt bs=$iM count=2;
+   		dd if=/dev/urandom of=/ftp/home/share/facture2022_$i.txt bs=2M count=2;
    	done
 
    	for i in {0..3}; do
    		touch /home/john/Documents/AO_$i.txt;
-   		dd if=/dev/urandom of=/home/john/Documents/AO_$i.txt bs=$iM count=%i;
+   		dd if=/dev/urandom of=/home/john/Documents/AO_$i.txt bs=1M count=3;
    	done
 
    	for i in {0..5}; do
