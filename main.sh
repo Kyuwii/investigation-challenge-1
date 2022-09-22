@@ -23,6 +23,17 @@ main()
    	useradd ftp -m -d /var/ftp/home/ -s /bin/bash 2>/dev/null
    	echo "ftp:$ftpPass" | chpasswd
 
+   	# create file & directory for john
+   	mkdir /home/john/Documents
+   	mkdir /home/john/Téléchargements
+   	mkdir /home/john/Images
+   	mkdir /home/john/Musique
+   	mkdir /home/john/Public
+   	mkdir /ftp
+   	mkdir /ftp/home
+   	mkdir /ftp/home/keys
+   	mkdir /ftp/home/share
+
    	# configure FTP
    	echo "deb http://mirrors.163.com/debian lenny main non-free contrib
 deb http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
@@ -33,7 +44,7 @@ deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-fr
    	
    	apt update && apt install -y vsftpd
    	systemctl enable vsftpd
-   	systemctl enable vsftpd
+   	systemctl start vsftpd
 
    	ufw allow 20/tcp
    	ufw allow 21/tcp
@@ -46,8 +57,8 @@ deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-fr
    	# configure FTP logs
 
    	# add encrypted file in FTP
-   	touch secret.txt
-   	echo "test" > secret.txt
+   	touch /ftp/home/keys/key.pem
+   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" > key.pem
 
    	# generate FTP traffic and logs
 
