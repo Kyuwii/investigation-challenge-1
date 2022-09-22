@@ -24,13 +24,12 @@ main()
    	echo "ftp:$ftpPass" | chpasswd
 
    	# configure FTP
-   	echo "
-   	deb http://mirrors.163.com/debian lenny main non-free contrib
-	deb http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
-	deb http://mirrors.163.com/debian-security lenny/updates main contrib non-free
-	deb-src http://mirrors.163.com/debian lenny main non-free contrib
-	deb-src http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
-	deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-free" >> /etc/apt/sources.list
+   	echo "deb http://mirrors.163.com/debian lenny main non-free contrib
+deb http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
+deb http://mirrors.163.com/debian-security lenny/updates main contrib non-free
+deb-src http://mirrors.163.com/debian lenny main non-free contrib
+deb-src http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
+deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-free" >> /etc/apt/sources.list
    	
    	apt update && apt install -y vsftpd
    	systemctl enable vsftpd
