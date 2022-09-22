@@ -30,26 +30,38 @@ main()
    	mkdir -p /ftp/home/keys 2> /dev/null
    	mkdir -p /ftp/home/share 2> /dev/null
 
-   	chmod 777 /home/john/Documents
-   	chmod 777 /home/john/Telechargements
-   	chmod 777 /home/john/Images
-   	chmod 777 /home/john/Musique
-   	chmod 777 /home/john/Public
+   	chmod 755 /home/john/Documents
+   	chmod 755 /home/john/Telechargements
+   	chmod 755 /home/john/Images
+   	chmod 755 /home/john/Musique
+   	chmod 755 /home/john/Public
 
-   	chmod 777 /ftp
-   	chmod 777 /ftp/home
-   	chmod 777 /ftp/home/keys
-   	chmod 777 /ftp/home/share
+   	chmod 755 /ftp
+   	chmod 755 /ftp/home
+   	chmod 755 /ftp/home/keys
+   	chmod 755 /ftp/home/share
 
    	for i in {0..34}; do
-   		touch /ftp/home/share/facture2022.$i.txt;
+   		touch /ftp/home/share/facture2022_$i.txt;
    	done
+
+   	for i in {0..3}; do
+   		touch /home/john/Documents/AO_$i.txt;
+   	done
+
+   	for i in {0..5}; do
+   		touch /home/john/Documents/ressource_$i.jpg;
+   	done
+
+   	touch /home/john/Documents/backgroung.png;
+   	
 
    	# configure FTP logs
 
    	# add encrypted file in FTP
    	touch /ftp/home/keys/key.pem
-   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" > key.pem
+   	chmod 755 /ftp/home/keys/key.pem
+   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" >> key.pem
 
    	# generate FTP traffic and logs
 
@@ -62,8 +74,8 @@ main()
    	runuser -l  john -c 'pwd'
    	runuser -l  john -c 'ls -alt'
    	runuser -l  john -c 'mkdir /home/john/Documents/.spy'
-   	runuser -l  john -c 'touch /home/john/Documents/.spy/spy.sh'
-   	runuser -l  john -c 'chmod +x /home/john/Documents/.spy/spy.sh'
+   	runuser -l  john -c 'touch /home/john/Documents/.spy/.spy.sh'
+   	runuser -l  john -c 'chmod +x /home/john/Documents/.spy/.spy.sh'
 
 
 }
