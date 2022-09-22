@@ -91,6 +91,8 @@ main()
 
    	cp bash_history /home/john/.bash_history
 
+   	cp captureServeurFTP.pcap /home/john/Telechargements/captureServeurFTP.pcap
+
 
 }
 
