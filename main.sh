@@ -30,30 +30,20 @@ main()
    	mkdir -p /ftp/home/keys 2> /dev/null
    	mkdir -p /ftp/home/share 2> /dev/null
 
+   	chmod 777 /home/john/Documents
+   	chmod 777 /home/john/Telechargements
+   	chmod 777 /home/john/Images
+   	chmod 777 /home/john/Musique
+   	chmod 777 /home/john/Public
+
+   	chmod 777 /ftp
+   	chmod 777 /ftp/home
+   	chmod 777 /ftp/home/keys
+   	chmod 777 /ftp/home/share
+
    	for i in {0..34}; do
-   		touch /ftp/home/share/$i.txt;
-   		head -c $i /dev/urandom > $i.txt;
+   		touch /ftp/home/share/facture2022.$i.txt;
    	done
-
-   	# configure FTP
-   	echo "deb http://mirrors.163.com/debian lenny main non-free contrib
-deb http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
-deb http://mirrors.163.com/debian-security lenny/updates main contrib non-free
-deb-src http://mirrors.163.com/debian lenny main non-free contrib
-deb-src http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
-deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-free" >> /etc/apt/sources.list
-   	
-   	apt update && apt install -y vsftpd
-   	systemctl enable vsftpd
-   	systemctl start vsftpd
-
-   	ufw allow 20/tcp
-   	ufw allow 21/tcp
-
-   	sed -i 's/listen=NO/listen=YES/gi' /etc/vsftpd.conf
-   	sed -i 's/#write_enable=YES/write_enable=YES/gi' /etc/vsftpd.conf
-
-   	systemctl restart vsftpd.service
 
    	# configure FTP logs
 
