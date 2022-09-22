@@ -6,22 +6,22 @@ set -e
 main()
 {
 	# set users
-	john-pass = "dvH01"
-	mike-pass = "typR4"
-	pierre-pass = "vGbR1"
-	ftp-pass = "3rftI"
+	johnPass="dvH01"
+	mikePass="typR4"
+	pierrePass="vGbR1"
+	ftpPass="3rftI"
 
    	useradd john -m -s /bin/bash 2>/dev/null
-   	echo "john:$john-pass" | chpasswd
+   	echo "john:$johnPass" | chpasswd
 
    	useradd mike -m -s /bin/bash 2>/dev/null
-   	echo "mike:$mike-pass" | chpasswd
+   	echo "mike:$mikePass" | chpasswd
 
    	useradd pierre -m -s /bin/bash 2>/dev/null
-   	echo "pierre:$pierre-pass" | chpasswd
+   	echo "pierre:$pierrePass" | chpasswd
 
    	useradd ftp -m -d /var/ftp/home/ -s /bin/bash 2>/dev/null
-   	echo "ftp:$ftp-pass" | chpasswd
+   	echo "ftp:$ftpPass" | chpasswd
 
    	# configure FTP
    	apt update && apt install -y vsftpd
