@@ -50,21 +50,21 @@ main()
 
    	for i in {0..34}; do
    		touch /ftp/home/share/facture2022_$i.txt;
-   		dd if=/dev/urandom of=/ftp/home/share/facture2022_$i.txt bs=2M count=2;
+   		dd if=/dev/urandom of=/ftp/home/share/facture2022_$i.txt bs=2k count=2;
    	done
 
    	for i in {0..3}; do
    		touch /home/john/Documents/AO_$i.txt;
-   		dd if=/dev/urandom of=/home/john/Documents/AO_$i.txt bs=1M count=3;
+   		dd if=/dev/urandom of=/home/john/Documents/AO_$i.txt bs=1k count=3;
    	done
 
    	for i in {0..5}; do
    		touch /home/john/Documents/ressource_$i.jpg;
-   		dd if=/dev/urandom of=/home/john/Documents/ressource_$i.jpg bs=1M count=2;
+   		dd if=/dev/urandom of=/home/john/Documents/ressource_$i.jpg bs=1k count=2;
    	done
 
    	touch /home/john/Documents/backgroung.png;
-   	dd if=/dev/urandom of=/home/john/Documents/backgroung.png bs=1M count=1
+   	dd if=/dev/urandom of=/home/john/Documents/backgroung.png bs=1k count=1
    	
 
    	# configure FTP logs
