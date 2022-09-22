@@ -5,7 +5,7 @@ set -e
 main()
 {
 
-	zip -r extract.zip /home/john/Documents/ /ftp/home/share
+	zip -r /ftp/home/share/extract.zip /home/john/Documents/ /ftp/home/share
 
 
 }
