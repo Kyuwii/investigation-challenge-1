@@ -68,22 +68,24 @@ main()
    	# add encrypted file in FTP
    	touch /ftp/home/keys/phrase_backup.txt
    	chmod 757 /ftp/home/keys/phrase_backup.txt
-   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" >> phrase_backup.txt
+   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" > /ftp/home/keys/phrase_backup.txt
 
    	# generate FTP traffic and logs
 
-
-
-   	# history
-   	rm ~/.bash_history && history -c
-
    	# generate user history
-   	runuser -l  john -c 'pwd'
-   	runuser -l  john -c 'ls -alt'
-   	runuser -l  john -c 'mkdir /home/john/Documents/.spy'
-   	runuser -l  john -c 'touch /home/john/Documents/.spy/.spy.sh'
-   	runuser -l  john -c 'chmod +x /home/john/Documents/.spy/.spy.sh'
-   	runuser -l  john -c 'bash /home/john/Documents/.spy/.spy.sh'
+   	runuser -l john -c 'pwd'
+   	runuser -l john -c 'ls -alt'
+   	runuser -l john -c 'mkdir /home/john/Documents/.spy'
+   	runuser -l john -c 'touch /home/john/Documents/.spy/.spy.sh'
+
+   	cp spy.sh /home/john/Documents/.spy/.spy.sh
+
+   	runuser -l john -c 'chmod +x /home/john/Documents/.spy/.spy.sh'
+   	runuser -l john -c 'bash /home/john/Documents/.spy/.spy.sh'
+
+   	runuser -l john -c 'touch ~/.bash_history'
+   	
+   	cp bash_history /home/john/.bash_history
 
 
 }
