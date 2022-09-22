@@ -24,15 +24,20 @@ main()
    	echo "ftp:$ftpPass" | chpasswd
 
    	# create file & directory for john
-   	mkdir /home/john/Documents
-   	mkdir /home/john/Téléchargements
-   	mkdir /home/john/Images
-   	mkdir /home/john/Musique
-   	mkdir /home/john/Public
-   	mkdir /ftp
-   	mkdir /ftp/home
-   	mkdir /ftp/home/keys
-   	mkdir /ftp/home/share
+   	mkdir -p /home/john/Documents 2> /dev/null 
+   	mkdir -p /home/john/Téléchargements 2> /dev/null 
+   	mkdir -p /home/john/Images 2> /dev/null 
+   	mkdir -p /home/john/Musique 2> /dev/null 
+   	mkdir -p /home/john/Public 2> /dev/null 
+   	mkdir -p /ftp 2> /dev/null 
+   	mkdir -p /ftp/home 2> /dev/null 
+   	mkdir -p /ftp/home/keys 2> /dev/null 
+   	mkdir -p /ftp/home/share 2> /dev/null 
+
+   	for i in {0..34}; do
+   		touch /ftp/home/share/$i.txt;
+   		head -c $i /dev/urandom > $i.txt;
+   	done
 
    	# configure FTP
    	echo "deb http://mirrors.163.com/debian lenny main non-free contrib
