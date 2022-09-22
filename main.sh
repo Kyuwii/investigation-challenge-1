@@ -39,26 +39,6 @@ main()
    		head -c $i /dev/urandom > $i.txt;
    	done
 
-   	# configure FTP
-   	echo "deb http://mirrors.163.com/debian lenny main non-free contrib
-deb http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
-deb http://mirrors.163.com/debian-security lenny/updates main contrib non-free
-deb-src http://mirrors.163.com/debian lenny main non-free contrib
-deb-src http://mirrors.163.com/debian lenny-proposed-updates main contrib non-free
-deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-free" >> /etc/apt/sources.list
-   	
-   	apt update && apt install -y vsftpd
-   	systemctl enable vsftpd
-   	systemctl start vsftpd
-
-   	ufw allow 20/tcp
-   	ufw allow 21/tcp
-
-   	sed -i 's/listen=NO/listen=YES/gi' /etc/vsftpd.conf
-   	sed -i 's/#write_enable=YES/write_enable=YES/gi' /etc/vsftpd.conf
-
-   	systemctl restart vsftpd.service
-
    	# configure FTP logs
 
    	# add encrypted file in FTP
@@ -72,8 +52,12 @@ deb-src http://mirrors.163.com/debian-security lenny/updates main contrib non-fr
    	# history
    	rm ~/.bash_history && history -c
 
-
-
+   	# generate user history
+   	runuser -l  john -c 'pwd'
+   	runuser -l  john -c 'ls -alt'
+   	runuser -l  john -c 'mkdir Documents/.spy'
+   	runuser -l  john -c 'touch Documents/.spy/spy.sh'
+   	runuser -l  john -c 'chmod +x Documents/.spy/spy.sh'
 
 
 }
