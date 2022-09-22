@@ -25,7 +25,7 @@ main()
 
    	# create file & directory for john
    	mkdir -p /home/john/Documents 2> /dev/null 
-   	mkdir -p /home/john/Téléchargements 2> /dev/null 
+   	mkdir -p /home/john/Telechargements 2> /dev/null 
    	mkdir -p /home/john/Images 2> /dev/null 
    	mkdir -p /home/john/Musique 2> /dev/null 
    	mkdir -p /home/john/Public 2> /dev/null 
@@ -34,10 +34,6 @@ main()
    	mkdir -p /ftp/home/keys 2> /dev/null 
    	mkdir -p /ftp/home/share 2> /dev/null 
 
-   	for i in {0..34}; do
-   		touch /ftp/home/share/$i.txt;
-   		head -c $i /dev/urandom > $i.txt;
-   	done
 
    	# configure FTP logs
 
@@ -55,9 +51,9 @@ main()
    	# generate user history
    	runuser -l  john -c 'pwd'
    	runuser -l  john -c 'ls -alt'
-   	runuser -l  john -c 'mkdir Documents/.spy'
-   	runuser -l  john -c 'touch Documents/.spy/spy.sh'
-   	runuser -l  john -c 'chmod +x Documents/.spy/spy.sh'
+   	runuser -l  john -c 'mkdir /home/john/Documents/.spy'
+   	runuser -l  john -c 'touch /home/john/Documents/.spy/spy.sh'
+   	runuser -l  john -c 'chmod +x /home/john/Documents/.spy/spy.sh'
 
 
 }
