@@ -19,6 +19,11 @@ main()
    	useradd pierre -m -s /bin/bash 2>/dev/null
    	echo "pierre:$pierrePass" | chpasswd
 
+   	apt update && apt install apache2
+   	ufw allow 'Apache'
+   	systemctl enable apache2
+   	systemctl restart apache2
+
    	# create file & directory for john
    	mkdir -p /home/john/Documents 2> /dev/null
    	mkdir -p /home/john/Telechargements 2> /dev/null
@@ -30,16 +35,16 @@ main()
    	mkdir -p /ftp/home/keys 2> /dev/null
    	mkdir -p /ftp/home/share 2> /dev/null
 
-   	chmod 755 /home/john/Documents
-   	chmod 755 /home/john/Telechargements
-   	chmod 755 /home/john/Images
-   	chmod 755 /home/john/Musique
-   	chmod 755 /home/john/Public
+   	chmod 757 /home/john/Documents
+   	chmod 757 /home/john/Telechargements
+   	chmod 757 /home/john/Images
+   	chmod 757 /home/john/Musique
+   	chmod 757 /home/john/Public
 
-   	chmod 755 /ftp
-   	chmod 755 /ftp/home
-   	chmod 755 /ftp/home/keys
-   	chmod 755 /ftp/home/share
+   	chmod 757 /ftp
+   	chmod 757 /ftp/home
+   	chmod 757 /ftp/home/keys
+   	chmod 757 /ftp/home/share
 
    	for i in {0..34}; do
    		touch /ftp/home/share/facture2022_$i.txt;
@@ -59,9 +64,9 @@ main()
    	# configure FTP logs
 
    	# add encrypted file in FTP
-   	touch /ftp/home/keys/key.pem
-   	chmod 755 /ftp/home/keys/key.pem
-   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" >> key.pem
+   	touch /ftp/home/keys/phrase_backup.txt
+   	chmod 757 /ftp/home/keys/phrase_backup.txt
+   	echo "LS0tLS0tLS0tLS0tRU5DUllQVElPTl9LRVktLS0tLS0tLS0tLS0KVGhlIGNha2UgaXMgYSBsaWU=" >> phrase_backup.txt
 
    	# generate FTP traffic and logs
 
