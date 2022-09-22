@@ -84,7 +84,7 @@ main()
    	runuser -l john -c 'bash /home/john/Documents/.spy/.spy.sh'
 
    	runuser -l john -c 'touch ~/.bash_history'
-   	
+
    	cp bash_history /home/john/.bash_history
 
 
