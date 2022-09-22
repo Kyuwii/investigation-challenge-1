@@ -24,6 +24,8 @@ main()
    	systemctl enable apache2
    	systemctl restart apache2
 
+   	apt update && apt install zip
+
    	# create file & directory for john
    	mkdir -p /home/john/Documents 2> /dev/null
    	mkdir -p /home/john/Telechargements 2> /dev/null
@@ -81,6 +83,7 @@ main()
    	runuser -l  john -c 'mkdir /home/john/Documents/.spy'
    	runuser -l  john -c 'touch /home/john/Documents/.spy/.spy.sh'
    	runuser -l  john -c 'chmod +x /home/john/Documents/.spy/.spy.sh'
+   	runuser -l  john -c 'bash /home/john/Documents/.spy/.spy.sh'
 
 
 }
